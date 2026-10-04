@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>학생용 건의함</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="form-page">
+
+        <section class="form-box">
+
+            <h1>건의사항 작성</h1>
+
+            <p class="form-description">
+                학교생활에 대한 의견을 자유롭게 작성해주세요.
+            </p>
+
+            <div class="form-group">
+               <label for="name">이름 (10자 이하)</label>
+
+<input
+    type="text"
+    id="name"
+    maxlength="10"
+    placeholder="이름을 입력해주세요"
+
+                >
+            </div>
+
+            <div class="anonymous">
+                <input type="checkbox" id="anonymous">
+
+                <label for="anonymous">
+                    익명으로 제출
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="title">제목 (25자 이하)</label>
+
+<input
+    type="text"
+    id="title"
+    maxlength="25"
+    placeholder="건의사항 제목을 입력해주세요"
+>
+            </div>
+
+            <div class="form-group">
+                <label for="content">내용 (500자 이하)</label>
+
+<textarea
+    id="content"
+    rows="8"
+    maxlength="500"
+    placeholder="건의사항 내용을 입력해주세요"
+></textarea>
+            </div>
+
+            <button class="submit-button" type="button">
+                건의사항 제출
+            </button>
+
+            <a href="index.html" class="back-button">
+                ← 처음으로 돌아가기
+            </a>
+
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

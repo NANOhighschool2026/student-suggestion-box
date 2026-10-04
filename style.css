@@ -1,0 +1,908 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #20242b;
+}
+
+.home {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+}
+
+
+/* 제목 영역 */
+
+.welcome {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.welcome h1 {
+    margin: 0;
+
+    font-size: 38px;
+    font-weight: 700;
+}
+
+.welcome p {
+    margin-top: 14px;
+
+    color: #69707d;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* 선택 버튼 */
+
+.choice {
+    width: 100%;
+    max-width: 700px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+.choice-card {
+    border: none;
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 35px 20px;
+
+    cursor: pointer;
+
+text-decoration: none;
+color: inherit;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    transition: 0.2s;
+}
+
+.choice-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
+}
+
+.choice-icon {
+    font-size: 40px;
+    margin-bottom: 18px;
+}
+
+.choice-title {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.choice-description {
+    margin-top: 8px;
+
+    color: #777f8c;
+    font-size: 14px;
+}
+
+
+/* 안내문 */
+
+.notice {
+    margin-top: 30px;
+
+    color: #8a919d;
+
+    font-size: 13px;
+}
+
+
+/* 휴대폰 */
+
+@media (max-width: 600px) {
+
+    .welcome h1 {
+        font-size: 30px;
+    }
+
+    .choice {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+
+    .choice-card {
+        padding: 28px 20px;
+    }
+
+}/* =========================
+   학생용 건의 작성 페이지
+   ========================= */
+
+.form-page {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 20px;
+}
+
+.form-box {
+    width: 100%;
+    max-width: 650px;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+}
+
+.form-box h1 {
+    margin: 0;
+
+    font-size: 30px;
+}
+
+.form-description {
+    margin-top: 10px;
+    margin-bottom: 30px;
+
+    color: #777f8c;
+}
+
+
+/* 입력 영역 */
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #dfe3e8;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    font-family: inherit;
+
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #667eea;
+
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.10);
+}
+
+
+/* 익명 */
+
+.anonymous {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: -8px;
+    margin-bottom: 22px;
+}
+
+.anonymous input {
+    width: 16px;
+    height: 16px;
+}
+
+.anonymous label {
+    font-size: 14px;
+    color: #555;
+}
+
+
+/* 제출 버튼 */
+
+.submit-button {
+    width: 100%;
+
+    border: none;
+
+    padding: 14px;
+
+    border-radius: 10px;
+
+    background: #20242b;
+    color: white;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+
+/* 처음으로 */
+
+.back-button {
+    display: block;
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    color: #777f8c;
+
+    font-size: 14px;
+
+    text-decoration: none;
+}
+
+.back-button:hover {
+    color: #20242b;
+}
+
+
+/* 휴대폰 */
+
+@media (max-width: 600px) {
+
+    .form-page {
+        padding: 20px 15px;
+    }
+
+    .form-box {
+        padding: 28px 20px;
+    }
+
+    .form-box h1 {
+        font-size: 26px;
+    }
+
+}/* =========================
+   관리자 로그인
+   ========================= */
+
+.login-page {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px 20px;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 450px;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+}
+
+.login-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.login-box h1 {
+    margin: 0;
+
+    font-size: 30px;
+}
+
+.login-description {
+    margin-top: 10px;
+    margin-bottom: 30px;
+
+    color: #777f8c;
+
+    line-height: 1.6;
+}
+
+.login-box .form-group {
+    text-align: left;
+}/* =========================
+   관리자 게시판
+   ========================= */
+
+.admin-page {
+    min-height: 100vh;
+
+    padding: 50px 20px;
+}
+
+.admin-container {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto;
+}
+
+
+/* 상단 */
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.admin-header h1 {
+    margin: 0;
+
+    font-size: 32px;
+}
+
+.admin-header p {
+    margin-top: 8px;
+
+    color: #777f8c;
+}
+
+.admin-home-button {
+    padding: 10px 16px;
+
+    border-radius: 9px;
+
+    background: white;
+
+    color: #555;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+/* 통계 */
+
+.admin-summary {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 35px;
+}
+
+.summary-box {
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 14px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.summary-label {
+    display: block;
+
+    color: #777f8c;
+
+    font-size: 14px;
+
+    margin-bottom: 8px;
+}
+
+.summary-box strong {
+    font-size: 28px;
+}
+
+
+/* 목록 */
+
+.suggestion-list h2 {
+    margin-bottom: 15px;
+
+    font-size: 20px;
+}
+
+.suggestion-card {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    background: white;
+
+    padding: 22px 24px;
+
+    margin-bottom: 12px;
+
+    border-radius: 14px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.suggestion-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.suggestion-info h3 {
+    margin: 0;
+
+    font-size: 17px;
+}
+
+.suggestion-info p {
+    margin-top: 8px;
+
+    margin-bottom: 0;
+
+    color: #8a919d;
+
+    font-size: 13px;
+}
+
+
+/* 상태 */
+
+.status {
+    flex-shrink: 0;
+
+    padding: 7px 11px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+.status.waiting {
+    background: #fff4d6;
+
+    color: #9a7100;
+}
+
+.status.complete {
+    background: #e5f7ed;
+
+    color: #24824a;
+}
+
+
+/* 휴대폰 */
+
+@media (max-width: 600px) {
+
+    .admin-page {
+        padding: 30px 15px;
+    }
+
+    .admin-header {
+        align-items: flex-start;
+    }
+
+    .admin-header h1 {
+        font-size: 26px;
+    }
+
+    .admin-summary {
+        gap: 8px;
+    }
+
+    .summary-box {
+        padding: 16px;
+    }
+
+    .summary-box strong {
+        font-size: 22px;
+    }
+
+    .suggestion-card {
+        padding: 18px;
+    }
+
+    .suggestion-info h3 {
+        font-size: 15px;
+    }
+.suggestion-list-header {
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.suggestion-filters {
+    width: 100%;
+}
+
+.filter-button {
+    flex: 1;
+}
+}/* =========================
+   관리자 상세보기
+   ========================= */
+
+.detail-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    z-index: 1000;
+}
+
+.detail-overlay.active {
+    display: flex;
+}
+
+.detail-box {
+    position: relative;
+
+    width: 100%;
+    max-width: 650px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 35px;
+
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+.detail-close {
+    position: absolute;
+
+    top: 18px;
+    right: 20px;
+
+    border: none;
+
+    background: none;
+
+    font-size: 28px;
+
+    color: #777;
+
+    cursor: pointer;
+}
+
+.detail-status {
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    background: #fff4d6;
+
+    color: #9a7100;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+.detail-box h2 {
+    margin-top: 18px;
+    margin-bottom: 8px;
+
+    font-size: 24px;
+}
+
+.detail-info {
+    margin-top: 0;
+
+    color: #8a919d;
+
+    font-size: 13px;
+}
+
+.detail-content {
+    margin-top: 25px;
+
+    padding: 20px;
+
+    min-height: 150px;
+
+    background: #f7f8fa;
+
+    border-radius: 12px;
+
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+}
+
+.detail-actions {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+.detail-actions button {
+    flex: 1;
+
+    border: none;
+
+    padding: 13px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.complete-button {
+    background: #e5f7ed;
+
+    color: #24824a;
+}
+
+.delete-button {
+    background: #ffe7e7;
+
+    color: #d33;
+}
+
+
+/* 휴대폰 */
+
+@media (max-width: 600px) {
+
+    .detail-box {
+        padding: 28px 20px;
+    }
+
+    .detail-box h2 {
+        font-size: 21px;
+    }
+
+}
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.admin-header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-home-button,
+.admin-logout-button {
+    border: none;
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.admin-home-button {
+    background: #eef1f6;
+    color: #3d4652;
+}
+
+.admin-home-button:hover {
+    background: #e2e6ed;
+}
+
+.admin-logout-button {
+    background: #f1f3f5;
+    color: #555;
+}
+
+.admin-logout-button:hover {
+    background: #e4e7eb;
+}
+@media (max-width: 600px) {
+
+    .form-page,
+    .login-page {
+        padding: 20px 14px;
+    }
+
+    .form-box,
+    .login-box {
+        width: 100%;
+        padding: 28px 20px;
+        border-radius: 16px;
+    }
+
+    .form-box h1,
+    .login-box h1 {
+        font-size: 24px;
+    }
+
+    .form-description,
+    .login-description {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 16px;
+    }
+
+    .submit-button,
+    .back-button {
+        width: 100%;
+    }
+
+    .admin-page {
+        padding: 16px 12px;
+    }
+
+    .admin-container {
+        width: 100%;
+    }
+
+    .admin-header {
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .admin-header h1 {
+        font-size: 24px;
+    }
+
+    .admin-header-buttons {
+        flex-shrink: 0;
+    }
+
+    .admin-home-button,
+    .admin-logout-button {
+        padding: 9px 11px;
+        font-size: 13px;
+    }
+
+    .admin-summary {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .suggestion-card {
+        padding: 16px;
+    }
+
+    .detail-box {
+        width: calc(100% - 24px);
+        max-height: 90vh;
+        padding: 24px 18px;
+    }
+
+    .detail-actions {
+        flex-direction: column;
+    }
+
+    .detail-actions button {
+        width: 100%;
+    }
+}
+.suggestion-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.suggestion-list-header h2 {
+    margin: 0;
+}
+
+.suggestion-filters {
+    display: flex;
+    gap: 8px;
+    padding: 4px;
+    background: #f1f3f6;
+    border-radius: 12px;
+}
+
+.filter-button {
+    border: none;
+    background: transparent;
+    color: #69717d;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.filter-button:hover {
+    color: #20242b;
+    background: #e6e9ee;
+}
+
+.filter-button.active {
+    background: white;
+    color: #20242b;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}

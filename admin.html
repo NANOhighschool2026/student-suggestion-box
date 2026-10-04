@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>관리자 건의함</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="admin-page">
+
+        <section class="admin-container">
+
+            <!-- 상단 -->
+
+            <div class="admin-header">
+
+                <div>
+                    <h1>학생회 건의함</h1>
+
+                    <p>
+                        접수된 건의사항을 관리합니다.
+                    </p>
+                </div>
+
+                <div class="admin-header-buttons">
+
+    <a href="index.html" class="admin-home-button">
+        처음으로
+    </a>
+
+    <button class="admin-logout-button" id="logout-button">
+        로그아웃
+    </button>
+
+</div>
+            </div>
+
+
+            <!-- 통계 -->
+
+            <div class="admin-summary">
+
+                <div class="summary-box">
+                    <span class="summary-label">
+                        전체 건의
+                    </span>
+
+                    <strong id="total-count">0</strong>
+                </div>
+
+
+                <div class="summary-box">
+                    <span class="summary-label">
+                        처리 대기
+                    </span>
+
+                    <strong id="waiting-count">0</strong>
+                </div>
+
+
+                <div class="summary-box">
+                    <span class="summary-label">
+                        처리 완료
+                    </span>
+
+                    <strong id="complete-count">0</strong>
+                </div>
+
+            </div>
+
+
+            <!-- 건의사항 목록 -->
+<section class="suggestion-list">
+
+    <div class="suggestion-list-header">
+
+        <h2>건의사항 목록</h2>
+
+        <div class="suggestion-filters">
+
+            <button
+                type="button"
+                class="filter-button active"
+                data-filter="all">
+                전체
+            </button>
+
+            <button
+                type="button"
+                class="filter-button"
+                data-filter="waiting">
+                처리 대기
+            </button>
+
+            <button
+                type="button"
+                class="filter-button"
+                data-filter="complete">
+                처리 완료
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+            
+<!-- 건의사항 상세보기 -->
+
+<div class="detail-overlay" id="detail-overlay">
+
+    <div class="detail-box">
+
+        <button class="detail-close" id="detail-close">
+            ×
+        </button>
+
+        <span class="detail-status" id="detail-status">
+            처리 대기
+        </span>
+
+        <h2 id="detail-title">
+            건의사항 제목
+        </h2>
+
+        <p class="detail-info" id="detail-info">
+            익명 · 2026.10.04
+        </p>
+
+        <div class="detail-content" id="detail-content">
+            건의사항 내용
+        </div>
+
+        <div class="detail-actions">
+
+            <button class="complete-button" id="complete-button">
+                처리 완료
+            </button>
+
+            <button class="delete-button" id="delete-button">
+                삭제
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+    </main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+<script src="admin.js"></script>
+</body>
+
+</html>
