@@ -42,3 +42,18 @@ loginButton.addEventListener("click", async function () {
     window.location.href = "admin.html";
 
 });
+
+
+// Enter 키로 로그인
+
+["admin-id", "admin-password"].forEach(function (id) {
+
+    document.getElementById(id).addEventListener("keydown", function (event) {
+
+        if (event.key === "Enter" && !event.isComposing) {
+            loginButton.click();
+        }
+
+    });
+
+});

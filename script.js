@@ -9,12 +9,25 @@ const blockedWords = [
     "shit"
 ];
 
+// 욕설이 아닌 낱말
+
+const allowedWords = [
+    "시발점"
+];
+
 function containsInappropriateExpression(text) {
 
-    const normalizedText =
+    // 기호만 지우고 띄어쓰기는 남깁니다.
+    // 띄어쓰기까지 지우면 "수업 시 발표" 같은 글이 막힙니다.
+
+    let normalizedText =
         text
             .toLowerCase()
-            .replace(/[\s\-_.,!?~'"“”‘’()[\]{}]/g, "");
+            .replace(/[^\p{L}\p{N}\s]/gu, "");
+
+    allowedWords.forEach(function (word) {
+        normalizedText = normalizedText.split(word).join(" ");
+    });
 
     return blockedWords.some(function (word) {
         return normalizedText.includes(word.toLowerCase());
@@ -159,7 +172,17 @@ submitButton.addEventListener("click", async function () {
 
         console.error(error);
 
-        alert("건의사항 제출에 실패했습니다.");
+        // P0001 은 DB 의 욕설 검사에 걸린 경우
+
+        if (error.code === "P0001") {
+
+            alert("부적절한 표현이 포함되어 있습니다. 내용을 수정해주세요.");
+
+        } else {
+
+            alert("건의사항 제출에 실패했습니다.");
+
+        }
 
         submitButton.disabled = false;
         submitButton.textContent = "건의사항 제출";
