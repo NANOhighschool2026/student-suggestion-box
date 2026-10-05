@@ -11,7 +11,7 @@ function formatDate(createdAt) {
 
     return new Date(createdAt).toLocaleDateString("ko-KR");
 }
-supabaseClient.auth.getSession().then(function (result) {
+supabaseClient.auth.getSession().then(async function (result) {
 
     const session = result.data.session;
 
@@ -20,9 +20,38 @@ supabaseClient.auth.getSession().then(function (result) {
         return;
     }
 
+
+    // 관리자 명단(admins 표)에 있는 계정인지 확인
+
+    const { data, error } =
+        await supabaseClient
+            .from("admins")
+            .select("user_id");
+
+    if (error) {
+
+        console.error(error);
+
+        alert("관리자 확인에 실패했습니다.");
+
+        return;
+
+    }
+
+    if (data.length === 0) {
+
+        alert("관리자 명단에 없는 계정입니다.");
+
+        await supabaseClient.auth.signOut();
+
+        window.location.href = "admin-login.html";
+
+        return;
+
+    }
+
     loadSuggestions();
 });
-console.log("admin.js 실행됨");
 
 
 // 건의사항 불러오기
@@ -44,8 +73,6 @@ async function loadSuggestions() {
         return;
 
     }
-console.log("DB에서 가져온 데이터:", data);
-console.log("created_at 값:", data[0].created_at, "자료형:", typeof data[0].created_at);
 // 통계 계산
 
 const totalCount =
@@ -259,18 +286,21 @@ completeButton.addEventListener("click", async function () {
     }
 
 
-    const { error } =
+    // 권한이 없으면 오류 없이 0건만 바뀌므로 바뀐 줄을 받아 확인
+
+    const { data, error } =
         await supabaseClient
             .from("suggestions")
             .update({
                 status: "complete"
             })
-            .eq("id", currentSuggestionId);
+            .eq("id", currentSuggestionId)
+            .select();
 
 
-    if (error) {
+    if (error || data.length === 0) {
 
-        console.error(error);
+        console.error(error || "바뀐 건의사항이 없습니다.");
 
         alert("처리 완료 변경에 실패했습니다.");
 
@@ -299,14 +329,15 @@ deleteButton.addEventListener("click", async function () {
         return;
     }
 
-    const { error } =
+    const { data, error } =
         await supabaseClient
             .from("suggestions")
             .delete()
-            .eq("id", currentSuggestionId);
+            .eq("id", currentSuggestionId)
+            .select();
 
-    if (error) {
-        console.error(error);
+    if (error || data.length === 0) {
+        console.error(error || "삭제된 건의사항이 없습니다.");
         alert("건의사항 삭제에 실패했습니다.");
         return;
     }
